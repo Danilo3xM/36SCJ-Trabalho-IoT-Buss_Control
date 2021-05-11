@@ -12,3 +12,7 @@ Gráficos - Para acessar, utilizar o link: http://localhost:1880/ui/
 
 Exemplo dos gráficos no Node-red:
 ![Captura de tela 2021-05-10 215643](https://user-images.githubusercontent.com/9849614/117743041-662bcc80-b1dc-11eb-9734-b47adfae7198.jpg)
+
+Banco de dados - Firebase.
+
+![image](https://user-images.githubusercontent.com/9849614/117746094-341d6900-b1e2-11eb-9734-70e5e8da223c.png)
