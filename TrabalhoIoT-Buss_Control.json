@@ -1,0 +1,870 @@
+[
+    {
+        "id": "dcce3c17.c8c8e",
+        "type": "tab",
+        "label": "DataCenter Simulador",
+        "disabled": false,
+        "info": "Descrição do DataCenter Simulador"
+    },
+    {
+        "id": "edc6c7ca.bbe188",
+        "type": "tab",
+        "label": "DataCenter Dashboard",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a1f409da.3490c8",
+        "type": "tab",
+        "label": "DataCenter Webservices",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8cf6817a.05c38",
+        "type": "mqtt-broker",
+        "name": "Test Mosquitto Broker",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4efb1756.b27048",
+        "type": "ui_tab",
+        "name": "TrabalhoIoT - Sala de Controle",
+        "icon": "face",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "5d70febf.9699c",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "3618bd71.267072",
+        "type": "ui_group",
+        "name": "Ônibus Básico",
+        "tab": "4efb1756.b27048",
+        "order": 1,
+        "disp": true,
+        "width": "4",
+        "collapse": false
+    },
+    {
+        "id": "763c5105.96ee2",
+        "type": "firebase admin",
+        "name": "Trabalho-IoT"
+    },
+    {
+        "id": "b9676c38.71009",
+        "type": "inject",
+        "z": "dcce3c17.c8c8e",
+        "name": "Simulacao - Entra 1 passageiro a cada 10 s",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 170,
+        "y": 140,
+        "wires": [
+            [
+                "458a9e51.379d8"
+            ]
+        ]
+    },
+    {
+        "id": "a485f91d.8d4438",
+        "type": "switch",
+        "z": "dcce3c17.c8c8e",
+        "name": "Controle de pessoas dentro do onibus (Total: 70, Max: 35)",
+        "property": "onibus_basico.nro_pass_oni_bas",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "17",
+                "vt": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "18",
+                "vt": "num",
+                "v2": "34",
+                "v2t": "num"
+            },
+            {
+                "t": "eq",
+                "v": "35",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "35",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 1430,
+        "y": 180,
+        "wires": [
+            [
+                "2cb1b637.6fb21a"
+            ],
+            [
+                "5f96e7af.e64238"
+            ],
+            [
+                "bed2ef2.88a0a1"
+            ],
+            [
+                "415bf3a1.d0293c"
+            ]
+        ]
+    },
+    {
+        "id": "2cb1b637.6fb21a",
+        "type": "function",
+        "z": "dcce3c17.c8c8e",
+        "name": "ADEQUADO",
+        "func": "msg.payload = \"QUANTIDADE ADEQUADA DE PASSAGEIROS\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1810,
+        "y": 120,
+        "wires": [
+            [
+                "653a159e.f261ac"
+            ]
+        ]
+    },
+    {
+        "id": "5f96e7af.e64238",
+        "type": "function",
+        "z": "dcce3c17.c8c8e",
+        "name": "ADEQUADO - ACIMA DA METADE",
+        "func": "var work_onibus_basico = global.get(\"Temp\");\n\nmsg.payload = \"ADEQUADO - FALTAM \" + (35 - work_onibus_basico.nro_pass_oni_bas) + \" PARA ATINGIR O LIMITE.\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1880,
+        "y": 160,
+        "wires": [
+            [
+                "653a159e.f261ac"
+            ]
+        ]
+    },
+    {
+        "id": "bed2ef2.88a0a1",
+        "type": "function",
+        "z": "dcce3c17.c8c8e",
+        "name": "ATENCAO - LIMITE ATINGIDO",
+        "func": "msg.payload = \"LIMITE DE PASSAGEIROS ATINGIDO\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1870,
+        "y": 200,
+        "wires": [
+            [
+                "653a159e.f261ac"
+            ]
+        ]
+    },
+    {
+        "id": "653a159e.f261ac",
+        "type": "debug",
+        "z": "dcce3c17.c8c8e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2430,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "e0ae7fd3.f16b6",
+        "type": "inject",
+        "z": "dcce3c17.c8c8e",
+        "name": "Simulação - Saí 1 passageiro a cada 20 s",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "-1",
+        "payloadType": "num",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "fae962ca.d75e9"
+            ]
+        ]
+    },
+    {
+        "id": "798d42c2.96d5cc",
+        "type": "function",
+        "z": "dcce3c17.c8c8e",
+        "name": "Onibus Basico - Controle",
+        "func": "var work_onibus_basico = global.get(\"Temp\");\n\nwork_onibus_basico.nro_pass_oni_bas = work_onibus_basico.nro_pass_oni_bas + msg.payload;\n\nif (msg.payload == 1){\n    work_onibus_basico.id_pass = work_onibus_basico.id_pass + 1;\n}\n\nif(work_onibus_basico.nro_pass_oni_bas < 0){\n    work_onibus_basico.nro_pass_oni_bas = 0;\n}\n\ndados = {\n    \"deviceUUID\" : \"ONIBUS_BASICO_\" + work_onibus_basico.id_pass,\n    \"data-hora\" : msg.myrawdate,\n    \"id_cliente\" : work_onibus_basico.id_pass,\n    \"value\" : msg.payload\n}\n\nmsg.payload = dados;\n\nglobal.set (\"onibus_basico.nro_pass_oni_bas\", work_onibus_basico.nro_pass_oni_bas);\nglobal.set (\"onibus_basico.id_pass\", work_onibus_basico.id_pass);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nvar onibus_basico = {};\nonibus_basico.nro_pass_oni_bas = 0;\nonibus_basico.id_pass = 0;\nglobal.set(\"Temp\", onibus_basico);",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 180,
+        "wires": [
+            [
+                "1f939343.76260d",
+                "a485f91d.8d4438",
+                "aec82efe.a37ac",
+                "a01b783a.606438"
+            ]
+        ]
+    },
+    {
+        "id": "e861a1d.7dbd06",
+        "type": "mqtt out",
+        "z": "dcce3c17.c8c8e",
+        "name": "MQTT Out - Onibus Basico - Gráficos",
+        "topic": "trabalhoiot/onibus_basico_grafico",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8cf6817a.05c38",
+        "x": 1670,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "dd341516.1f68a8",
+        "type": "ui_gauge",
+        "z": "edc6c7ca.bbe188",
+        "name": "Nro atual de Passageiros",
+        "group": "3618bd71.267072",
+        "order": 0,
+        "width": "4",
+        "height": "4",
+        "gtype": "gage",
+        "title": "",
+        "label": "Passageiro",
+        "format": "{{nro_pass_atual}}",
+        "min": "0",
+        "max": "70",
+        "colors": [
+            "#00ff4c",
+            "#e2e600",
+            "#ff2600"
+        ],
+        "seg1": "17",
+        "seg2": "35",
+        "x": 1110,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "21d93a20.3d0db6",
+        "type": "mqtt in",
+        "z": "edc6c7ca.bbe188",
+        "name": "MQTT In - Onibus Basico - Gráficos",
+        "topic": "trabalhoiot/onibus_basico_grafico",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "8cf6817a.05c38",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 280,
+        "y": 80,
+        "wires": [
+            [
+                "d44fed9f.4f54c"
+            ]
+        ]
+    },
+    {
+        "id": "d44fed9f.4f54c",
+        "type": "json",
+        "z": "edc6c7ca.bbe188",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 530,
+        "y": 80,
+        "wires": [
+            [
+                "e6aba27.8d0786",
+                "1b02b7fe.fc9058",
+                "c5d62128.f58bd"
+            ]
+        ]
+    },
+    {
+        "id": "e6aba27.8d0786",
+        "type": "function",
+        "z": "edc6c7ca.bbe188",
+        "name": "Onibus Basico - Total de Passageiros",
+        "func": "msg.payload = msg.payload.nro_pass_total;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 80,
+        "wires": [
+            [
+                "fd7c97f.7801668"
+            ]
+        ]
+    },
+    {
+        "id": "93ea5413.85ddd8",
+        "type": "mqtt in",
+        "z": "a1f409da.3490c8",
+        "name": "MQTT In - Onibus Basico - Dados",
+        "topic": "trabalhoiot/onibus_basico_dados",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "8cf6817a.05c38",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 370,
+        "y": 140,
+        "wires": [
+            [
+                "15cb0cf6.d56fa3"
+            ]
+        ]
+    },
+    {
+        "id": "58fdd264.96e02c",
+        "type": "function",
+        "z": "a1f409da.3490c8",
+        "name": "",
+        "func": "msg[\"doc\"] = msg.payload.deviceUUID;\n\ncontext.global.temperatura = msg.payload;\n\ndelete msg.payload.deviceUUID;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 140,
+        "wires": [
+            [
+                "2b25a662.2542da"
+            ]
+        ]
+    },
+    {
+        "id": "15cb0cf6.d56fa3",
+        "type": "json",
+        "z": "a1f409da.3490c8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 610,
+        "y": 140,
+        "wires": [
+            [
+                "58fdd264.96e02c"
+            ]
+        ]
+    },
+    {
+        "id": "2b25a662.2542da",
+        "type": "Firestore out",
+        "z": "a1f409da.3490c8",
+        "name": "Persistencia de Dados",
+        "collection": "Onibus_Basico",
+        "document": "{{doc}}",
+        "operation": "set",
+        "admin": "763c5105.96ee2",
+        "eject": false,
+        "x": 960,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2b69e5ed.a38b1a",
+        "type": "debug",
+        "z": "edc6c7ca.bbe188",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "415bf3a1.d0293c",
+        "type": "function",
+        "z": "dcce3c17.c8c8e",
+        "name": "iNADEQUADO - ULTRAPASSOU QUANTIDADE MAXIMA DE PASSAGEIROS",
+        "func": "var work_onibus_basico = global.get(\"Temp\");\n\nmsg.payload = \"LIMITE ULTRAPASSADO EM \" + (work_onibus_basico.nro_pass_oni_bas - 35) + \" PASSAGEIRO(S)\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2020,
+        "y": 240,
+        "wires": [
+            [
+                "653a159e.f261ac"
+            ]
+        ]
+    },
+    {
+        "id": "458a9e51.379d8",
+        "type": "simpletime",
+        "z": "dcce3c17.c8c8e",
+        "name": "DataHora",
+        "mydate": true,
+        "myymd": true,
+        "myyear": true,
+        "mymonth": true,
+        "mymonthn": true,
+        "mydom": true,
+        "mydoy": true,
+        "myday": true,
+        "myhourpm": true,
+        "myhour": true,
+        "mytime": true,
+        "mytimes": true,
+        "myminute": true,
+        "myminutes": true,
+        "mysecond": true,
+        "mymillis": true,
+        "myepoch": true,
+        "myrawdate": true,
+        "mypm": true,
+        "x": 420,
+        "y": 140,
+        "wires": [
+            [
+                "e6f467c9.a17908"
+            ]
+        ]
+    },
+    {
+        "id": "1f939343.76260d",
+        "type": "debug",
+        "z": "dcce3c17.c8c8e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1290,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "e6f467c9.a17908",
+        "type": "change",
+        "z": "dcce3c17.c8c8e",
+        "name": "Onibus Basico - Controle de Passageiros - Entrada",
+        "rules": [
+            {
+                "t": "set",
+                "p": "nro_pass_oni_bas",
+                "pt": "global",
+                "to": "+1",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "id_pass",
+                "pt": "global",
+                "to": "+1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 140,
+        "wires": [
+            [
+                "798d42c2.96d5cc"
+            ]
+        ]
+    },
+    {
+        "id": "8227e6a2.816428",
+        "type": "change",
+        "z": "dcce3c17.c8c8e",
+        "name": "Onibus Basico - Controle de Passageiros - Saída",
+        "rules": [
+            {
+                "t": "set",
+                "p": "nro_pass_oni_bas",
+                "pt": "global",
+                "to": "-1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 220,
+        "wires": [
+            [
+                "798d42c2.96d5cc"
+            ]
+        ]
+    },
+    {
+        "id": "fae962ca.d75e9",
+        "type": "simpletime",
+        "z": "dcce3c17.c8c8e",
+        "name": "DataHora",
+        "mydate": true,
+        "myymd": true,
+        "myyear": true,
+        "mymonth": true,
+        "mymonthn": true,
+        "mydom": true,
+        "mydoy": true,
+        "myday": true,
+        "myhourpm": true,
+        "myhour": true,
+        "mytime": true,
+        "mytimes": true,
+        "myminute": true,
+        "myminutes": true,
+        "mysecond": true,
+        "mymillis": true,
+        "myepoch": true,
+        "myrawdate": true,
+        "mypm": true,
+        "x": 420,
+        "y": 220,
+        "wires": [
+            [
+                "8227e6a2.816428"
+            ]
+        ]
+    },
+    {
+        "id": "aec82efe.a37ac",
+        "type": "function",
+        "z": "dcce3c17.c8c8e",
+        "name": "Dados - Grafico - Onibus Basico",
+        "func": "var work_onibus_basico = global.get(\"Temp\");\n\ndados = {\n    \"data-hora\" : msg.myrawdate,\n    \"nro_pass_total\" : work_onibus_basico.id_pass,\n    \"nro_pass_atual\" : work_onibus_basico.nro_pass_oni_bas\n}\n\nmsg.payload = dados;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1350,
+        "y": 320,
+        "wires": [
+            [
+                "e861a1d.7dbd06"
+            ]
+        ]
+    },
+    {
+        "id": "1b02b7fe.fc9058",
+        "type": "function",
+        "z": "edc6c7ca.bbe188",
+        "name": "Onibus Basico - Nro atual de Passageiros",
+        "func": "msg.payload = msg.payload.nro_pass_atual;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 140,
+        "wires": [
+            [
+                "dd341516.1f68a8",
+                "6f284ede.d540c"
+            ]
+        ]
+    },
+    {
+        "id": "c5d62128.f58bd",
+        "type": "function",
+        "z": "edc6c7ca.bbe188",
+        "name": "Onibus Basico - Passageiros/Hora",
+        "func": "msg.payload = msg.payload.nro_pass_atual;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 200,
+        "wires": [
+            [
+                "63782af.a36add4"
+            ]
+        ]
+    },
+    {
+        "id": "fd7c97f.7801668",
+        "type": "ui_text",
+        "z": "edc6c7ca.bbe188",
+        "group": "3618bd71.267072",
+        "order": 1,
+        "width": "4",
+        "height": "2",
+        "name": "Total de Passageiros",
+        "label": "Total de Passageiros",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 1100,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "63782af.a36add4",
+        "type": "ui_chart",
+        "z": "edc6c7ca.bbe188",
+        "name": "Passageiros/Hora",
+        "group": "3618bd71.267072",
+        "order": 2,
+        "width": "4",
+        "height": "4",
+        "label": "Passageiros/Hora",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Sem dados",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "70",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1090,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a01b783a.606438",
+        "type": "mqtt out",
+        "z": "dcce3c17.c8c8e",
+        "name": "MQTT Out - Onibus Basico - Dados",
+        "topic": "trabalhoiot/onibus_basico_dados",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8cf6817a.05c38",
+        "x": 1360,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "6f284ede.d540c",
+        "type": "ui_text",
+        "z": "edc6c7ca.bbe188",
+        "group": "3618bd71.267072",
+        "order": 3,
+        "width": "4",
+        "height": "2",
+        "name": "Nro atual de Passageiros",
+        "label": "Nro atual de Passageiros",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 1110,
+        "y": 120,
+        "wires": []
+    }
+]
